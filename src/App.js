@@ -25,11 +25,9 @@ class App extends Component {
   };
 
   changeNameHandler = (e) => {
-    const updatedName = e.target.value;
-
     this.setState({
       persons: [
-        { id: 1, name: updatedName, age: 30 },
+        { id: 1, name: e.target.value, age: 30 },
         { id: 2, name: 'John', age: 55 },
         { id: 3, name: 'Sarah', age: 37 },
       ],
@@ -55,15 +53,19 @@ class App extends Component {
           Switch Name
         </button>
 
-        {this.state.persons.map((person) => (
-          <Person
-            id={person.id}
-            key={person.id}
-            name={person.name}
-            age={person.age}
-            changeName={this.changeNameHandler}
-          />
-        ))}
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+          changeName={this.changeNameHandler}
+        />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+        />
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age}
+        />
 
         <Person
           click={this.switchNameHandler.bind(this, 'SUPERMAN')}
