@@ -24,7 +24,19 @@ class App extends Component {
     });
   };
 
-  reset = () => {
+  changeNameHandler = (e) => {
+    const updatedName = e.target.value;
+
+    this.setState({
+      persons: [
+        { id: 1, name: updatedName, age: 30 },
+        { id: 2, name: 'John', age: 55 },
+        { id: 3, name: 'Sarah', age: 37 },
+      ],
+    });
+  };
+
+  resetHandler = () => {
     this.setState({
       persons: [
         { id: 1, name: 'Jake', age: 28 },
@@ -49,18 +61,20 @@ class App extends Component {
             key={person.id}
             name={person.name}
             age={person.age}
+            changeName={this.changeNameHandler}
           />
         ))}
 
         <Person
           click={this.switchNameHandler.bind(this, 'SUPERMAN')}
+          changeName={this.changeNameHandler}
           name="Manu"
           age="29"
         >
           My Hobbies: Racing
         </Person>
 
-        <button onClick={this.reset}>RESET</button>
+        <button onClick={this.resetHandler}>RESET</button>
       </div>
     );
   }
