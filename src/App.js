@@ -45,11 +45,32 @@ class App extends Component {
   };
 
   render() {
+    const styleSwitchName = {
+      backgroundColor: 'blue',
+      color: 'white',
+      font: 'inherit',
+      border: '3px solid black',
+      padding: '8px',
+      cursor: 'pointer',
+    };
+
+    const styleReset = {
+      backgroundColor: 'red',
+      color: 'white',
+      font: 'inherit',
+      border: '3px solid black',
+      padding: '8px',
+      cursor: 'pointer',
+    };
+
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working</p>
-        <button onClick={() => this.switchNameHandler('DC 5000')}>
+        <button
+          style={styleSwitchName}
+          onClick={() => this.switchNameHandler('DC 5000')}
+        >
           Switch Name
         </button>
 
@@ -76,7 +97,9 @@ class App extends Component {
           My Hobbies: Racing
         </Person>
 
-        <button onClick={this.resetHandler}>RESET</button>
+        <button style={styleReset} onClick={this.resetHandler}>
+          RESET
+        </button>
       </div>
     );
   }
