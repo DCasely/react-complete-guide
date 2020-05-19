@@ -6,3 +6,8 @@
   padding: 16px;
   text-align: center;
 }
+
+.Person:hover {
+  background-color: red;
+  cursor: pointer;
+}

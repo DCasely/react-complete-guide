@@ -18,14 +18,11 @@ class App extends Component {
     this.setState({ showAccounts: !show });
   };
 
-  changeNameHandler = (e) => {
-    this.setState({
-      accounts: [
-        { id: 1, name: e.target.value, age: 30 },
-        { id: 2, name: e.target.value, age: 55 },
-        { id: 3, name: e.target.value, age: 37 },
-      ],
-    });
+  deleteAccount = (accountIndex) => {
+    // const account = this.state.accounts.slice();
+    const accounts = [...this.state.accounts];
+    accounts.splice(accountIndex, 1);
+    this.setState({ accounts: accounts });
   };
 
   resetHandler = () => {
@@ -44,13 +41,13 @@ class App extends Component {
     if (this.state.showAccounts) {
       accounts = (
         <div>
-          {this.state.accounts.map((account) => (
+          {this.state.accounts.map((account, index) => (
             <Person
               id={account.id}
               key={account.id}
               name={account.name}
               age={account.age}
-              changeName={this.changeNameHandler}
+              click={() => this.deleteAccount(index)}
             />
           ))}
         </div>
