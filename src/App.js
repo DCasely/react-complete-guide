@@ -4,7 +4,7 @@ import Person from './Person/Person';
 
 class App extends Component {
   state = {
-    persons: [
+    accounts: [
       { id: 1, name: 'Davin', age: 30 },
       { id: 2, name: 'Jack', age: 40 },
       { id: 3, name: 'Bill', age: 31 },
@@ -20,7 +20,7 @@ class App extends Component {
 
   changeNameHandler = (e) => {
     this.setState({
-      persons: [
+      accounts: [
         { id: 1, name: e.target.value, age: 30 },
         { id: 2, name: e.target.value, age: 55 },
         { id: 3, name: e.target.value, age: 37 },
@@ -30,7 +30,7 @@ class App extends Component {
 
   resetHandler = () => {
     this.setState({
-      persons: [
+      accounts: [
         { id: 1, name: 'Davin', age: 30 },
         { id: 2, name: 'Jack', age: 40 },
         { id: 3, name: 'Bill', age: 31 },
@@ -39,26 +39,20 @@ class App extends Component {
   };
 
   render() {
-    let persons = null;
+    let accounts = null;
 
     if (this.state.showAccounts) {
-      persons = (
+      accounts = (
         <div>
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-            changeName={this.changeNameHandler}
-          />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            changeName={this.changeNameHandler}
-          />
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-            changeName={this.changeNameHandler}
-          />
+          {this.state.accounts.map((account) => (
+            <Person
+              id={account.id}
+              key={account.id}
+              name={account.name}
+              age={account.age}
+              changeName={this.changeNameHandler}
+            />
+          ))}
         </div>
       );
     }
@@ -71,7 +65,7 @@ class App extends Component {
           Show Names
         </button>
 
-        {persons}
+        {accounts}
 
         <button className="styleReset" onClick={this.resetHandler}>
           RESET
