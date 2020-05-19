@@ -47,7 +47,7 @@ class App extends Component {
               key={account.id}
               name={account.name}
               age={account.age}
-              click={() => this.deleteAccount(index)}
+              click={() => this.deleteAccount(account.id)}
             />
           ))}
         </div>
@@ -56,8 +56,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p>This is really working</p>
+        <h1>REACT TRAINING</h1>
+
         <button className="styleSwitchName" onClick={this.showAccounts}>
           Show Names
         </button>
