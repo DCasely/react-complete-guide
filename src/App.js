@@ -31,7 +31,7 @@ class App extends Component {
   resetHandler = () => {
     this.setState({
       persons: [
-        { id: 1, name: 'Jake', age: 28 },
+        { id: 1, name: 'Davin', age: 30 },
         { id: 2, name: 'Jack', age: 40 },
         { id: 3, name: 'Bill', age: 31 },
       ],
@@ -39,55 +39,41 @@ class App extends Component {
   };
 
   render() {
-    const styleSwitchName = {
-      backgroundColor: 'blue',
-      color: 'white',
-      font: 'inherit',
-      border: '3px solid black',
-      padding: '8px',
-      cursor: 'pointer',
-      display: 'block',
-      margin: '1rem auto',
-    };
+    let persons = null;
 
-    const styleReset = {
-      backgroundColor: 'red',
-      color: 'white',
-      font: 'inherit',
-      border: '3px solid black',
-      padding: '8px',
-      cursor: 'pointer',
-    };
+    if (this.state.showAccounts) {
+      persons = (
+        <div>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+            changeName={this.changeNameHandler}
+          />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            changeName={this.changeNameHandler}
+          />
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+            changeName={this.changeNameHandler}
+          />
+        </div>
+      );
+    }
 
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working</p>
-        <button style={styleSwitchName} onClick={this.showAccounts}>
+        <button className="styleSwitchName" onClick={this.showAccounts}>
           Show Names
         </button>
 
-        {this.state.showAccounts && (
-          <div>
-            <Person
-              name={this.state.persons[0].name}
-              age={this.state.persons[0].age}
-              changeName={this.changeNameHandler}
-            />
-            <Person
-              name={this.state.persons[1].name}
-              age={this.state.persons[1].age}
-              changeName={this.changeNameHandler}
-            />
-            <Person
-              name={this.state.persons[2].name}
-              age={this.state.persons[2].age}
-              changeName={this.changeNameHandler}
-            />
-          </div>
-        )}
+        {persons}
 
-        <button style={styleReset} onClick={this.resetHandler}>
+        <button className="styleReset" onClick={this.resetHandler}>
           RESET
         </button>
       </div>

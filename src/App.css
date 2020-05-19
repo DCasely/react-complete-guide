@@ -1,3 +1,23 @@
 .App {
   text-align: center;
 }
+
+.styleSwitchName {
+  background-color: blue;
+  color: white;
+  font: inherit;
+  border: 3px solid black;
+  padding: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 1rem auto;
+}
+
+.styleReset {
+  background-color: red;
+  color: white;
+  font: inherit;
+  border: 3px solid black;
+  padding: 8px;
+  cursor: pointer;
+}
