@@ -18,6 +18,24 @@ class App extends Component {
     this.setState({ showAccounts: !show });
   };
 
+  updateName = (e, id) => {
+    const accountIndex = this.state.accounts.findIndex((acc) => {
+      return acc.id === id;
+    });
+
+    const account = { ...this.state.accounts[accountIndex] };
+
+    account.name = e.target.value;
+
+    const accounts = [...this.state.accounts];
+
+    accounts[accountIndex] = account;
+
+    this.setState({
+      accounts: accounts,
+    });
+  };
+
   deleteAccount = (accountIndex) => {
     // const account = this.state.accounts.slice();
     const accounts = [...this.state.accounts];
@@ -48,6 +66,7 @@ class App extends Component {
               name={account.name}
               age={account.age}
               click={() => this.deleteAccount(account.id)}
+              changeName={(e) => this.updateName(e, account.id)}
             />
           ))}
         </div>
