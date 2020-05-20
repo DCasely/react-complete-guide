@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classModule from './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -87,7 +87,7 @@ class App extends Component {
           Work Like There's Someone Working 24hrs Trying To Take It From You.
         </p>
 
-        <button className="button" onClick={this.showAccounts}>
+        <button className="Button" onClick={this.showAccounts}>
           {this.state.showAccounts ? 'Hide Names' : 'Show Names'}
         </button>
 
