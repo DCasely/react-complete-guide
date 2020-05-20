@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import './App.css';
 import Person from './Person/Person';
 
@@ -80,27 +79,6 @@ class App extends Component {
     if (this.state.accounts.length <= 2) classes.push('red');
     if (this.state.accounts.length <= 1) classes.push('bold');
 
-    const StyledButton = styled.button`
-      background-color: ${(props) => (props.red ? 'red' : 'green')};
-      color: white;
-      font: inherit;
-      border: 3px solid black;
-      padding: 8px;
-      cursor: pointer;
-      display: block;
-      margin: 1rem auto;
-
-      &:hover {
-        background-color: black;
-        color: white;
-        transform: scale(1.1);
-      }
-
-      &:active {
-        transform: scale(1);
-      }
-    `;
-
     return (
       <div className="App">
         <h1>REACT TRAINING</h1>
@@ -109,9 +87,9 @@ class App extends Component {
           Work Like There's Someone Working 24hrs Trying To Take It From You.
         </p>
 
-        <StyledButton red={this.state.showAccounts} onClick={this.showAccounts}>
+        <button className="button" onClick={this.showAccounts}>
           {this.state.showAccounts ? 'Hide Names' : 'Show Names'}
-        </StyledButton>
+        </button>
 
         {accounts}
 

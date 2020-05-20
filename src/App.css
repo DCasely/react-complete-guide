@@ -32,6 +32,32 @@
   margin: 1rem auto;
 } */
 
+.button {
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 3px solid black;
+  padding: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 1rem auto;
+}
+
+.button:hover {
+  background-color: black;
+  color: white;
+  transform: scale(1.1);
+}
+
+.button:active {
+  transform: scale(1);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .reset-btn {
   background-color: red;
   color: white;
@@ -40,16 +66,3 @@
   padding: 8px;
   cursor: pointer;
 }
-
-/* button:hover {
-  transform: scale(1.1);
-}
-
-button:active {
-  transform: scale(1);
-}
-
-button:focus {
-  outline: none;
-  box-shadow: none;
-} */
