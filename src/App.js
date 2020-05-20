@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import classModule from './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import './App.css';
 
 class App extends Component {
   state = {
@@ -37,12 +38,11 @@ class App extends Component {
   };
 
   deleteAccount = (index) => {
-    // const account = this.state.accounts.slice();
     const accounts = [...this.state.accounts];
 
-    accounts.splice(index, 1);
+    const updatedAccounts = accounts.filter((account, idx) => idx !== index);
 
-    this.setState({ accounts: accounts });
+    this.setState({ accounts: updatedAccounts });
   };
 
   resetHandler = () => {
@@ -62,14 +62,14 @@ class App extends Component {
       accounts = (
         <div>
           {this.state.accounts.map((account, index) => (
-            <Person
-              id={account.id}
-              key={account.id}
-              name={account.name}
-              age={account.age}
-              click={() => this.deleteAccount(index)}
-              changeName={(e) => this.updateName(e, account.id)}
-            />
+            <ErrorBoundary id={account.id} key={account.id}>
+              <Person
+                name={account.name}
+                age={account.age}
+                click={() => this.deleteAccount(index)}
+                changeName={(e) => this.updateName(e, account.id)}
+              />
+            </ErrorBoundary>
           ))}
         </div>
       );
