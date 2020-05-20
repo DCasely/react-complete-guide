@@ -75,13 +75,23 @@ class App extends Component {
       );
     }
 
+    const classes = [];
+    if (this.state.accounts.length <= 2) classes.push('red');
+    if (this.state.accounts.length <= 1) classes.push('bold');
+
     return (
       <div className="App">
         <h1>REACT TRAINING</h1>
 
+        <p className={classes.join(' ')}>
+          Work Like There's Someone Working 24hrs Trying To Take It From You.
+        </p>
+
         <button
           className={
-            this.state.showAccounts ? 'show-names-btn-red' : 'show-names-btn'
+            this.state.showAccounts
+              ? 'show-names-btn-red'
+              : 'show-names-btn-green'
           }
           onClick={this.showAccounts}
         >

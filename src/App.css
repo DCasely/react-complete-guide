@@ -2,7 +2,15 @@
   text-align: center;
 }
 
-.show-names-btn {
+.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.show-names-btn-green {
   background-color: green;
   color: white;
   font: inherit;
