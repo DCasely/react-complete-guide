@@ -57,27 +57,6 @@ class App extends Component {
   };
 
   render() {
-    const buttonStyle = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '3px solid black',
-      padding: '8px',
-      cursor: 'pointer',
-      display: 'block',
-      margin: '1rem auto',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black',
-        transform: 'scale(1.1)',
-      },
-      ':active': {
-        backgroundColor: 'black',
-        color: 'white',
-        transform: 'scale(1)',
-      },
-    };
-
     let accounts = null;
 
     if (this.state.showAccounts) {
@@ -95,13 +74,31 @@ class App extends Component {
           ))}
         </div>
       );
-
-      buttonStyle.backgroundColor = 'red';
     }
 
     const classes = [];
     if (this.state.accounts.length <= 2) classes.push('red');
     if (this.state.accounts.length <= 1) classes.push('bold');
+
+    const StyledButton = styled.button`
+      background-color: green;
+      color: white;
+      font: inherit;
+      border: 3px solid black;
+      padding: 8px;
+      cursor: pointer;
+      display: block;
+      margin: 1rem auto;
+
+      &:hover {
+        background-color: red;
+        transform: scale(1.1);
+      }
+
+      &:active {
+        transform: scale(1);
+      }
+    `;
 
     return (
       <div className="App">
@@ -111,9 +108,9 @@ class App extends Component {
           Work Like There's Someone Working 24hrs Trying To Take It From You.
         </p>
 
-        <button style={buttonStyle} onClick={this.showAccounts}>
+        <StyledButton onClick={this.showAccounts}>
           {this.state.showAccounts ? 'Hide Names' : 'Show Names'}
-        </button>
+        </StyledButton>
 
         {accounts}
 
