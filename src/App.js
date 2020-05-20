@@ -64,12 +64,12 @@ class App extends Component {
         <div>
           {this.state.accounts.map((account, index) => (
             <Person
-              id={index}
-              key={index}
+              id={account.id}
+              key={account.id}
               name={account.name}
               age={account.age}
               click={() => this.deleteAccount(index)}
-              changeName={(e) => this.updateName(e, index)}
+              changeName={(e) => this.updateName(e, account.id)}
             />
           ))}
         </div>
@@ -81,7 +81,7 @@ class App extends Component {
     if (this.state.accounts.length <= 1) classes.push('bold');
 
     const StyledButton = styled.button`
-      background-color: green;
+      background-color: ${(props) => (props.red ? 'red' : 'green')};
       color: white;
       font: inherit;
       border: 3px solid black;
@@ -91,7 +91,8 @@ class App extends Component {
       margin: 1rem auto;
 
       &:hover {
-        background-color: red;
+        background-color: black;
+        color: white;
         transform: scale(1.1);
       }
 
@@ -108,7 +109,7 @@ class App extends Component {
           Work Like There's Someone Working 24hrs Trying To Take It From You.
         </p>
 
-        <StyledButton onClick={this.showAccounts}>
+        <StyledButton red={this.state.showAccounts} onClick={this.showAccounts}>
           {this.state.showAccounts ? 'Hide Names' : 'Show Names'}
         </StyledButton>
 
