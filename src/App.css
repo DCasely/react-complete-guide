@@ -40,3 +40,16 @@
   padding: 8px;
   cursor: pointer;
 }
+
+/* button:hover {
+  transform: scale(1.1);
+}
+
+button:active {
+  transform: scale(1);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+} */

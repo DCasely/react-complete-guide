@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium from 'radium';
 import './App.css';
 import Person from './Person/Person';
 
@@ -56,6 +57,27 @@ class App extends Component {
   };
 
   render() {
+    const buttonStyle = {
+      backgroundColor: 'green',
+      color: 'white',
+      font: 'inherit',
+      border: '3px solid black',
+      padding: '8px',
+      cursor: 'pointer',
+      display: 'block',
+      margin: '1rem auto',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black',
+        transform: 'scale(1.1)',
+      },
+      ':active': {
+        backgroundColor: 'black',
+        color: 'white',
+        transform: 'scale(1)',
+      },
+    };
+
     let accounts = null;
 
     if (this.state.showAccounts) {
@@ -87,14 +109,7 @@ class App extends Component {
           Work Like There's Someone Working 24hrs Trying To Take It From You.
         </p>
 
-        <button
-          className={
-            this.state.showAccounts
-              ? 'show-names-btn-red'
-              : 'show-names-btn-green'
-          }
-          onClick={this.showAccounts}
-        >
+        <button style={buttonStyle} onClick={this.showAccounts}>
           {this.state.showAccounts ? 'Hide Names' : 'Show Names'}
         </button>
 
@@ -108,28 +123,4 @@ class App extends Component {
   }
 }
 
-export default App;
-
-// const [personsState, setPersonsState] = useState({
-//   persons: [
-//     { id: 1, name: 'Jake', age: 28 },
-//     { id: 2, name: 'Jack', age: 40 },
-//     { id: 3, name: 'Bill', age: 31 },
-//   ],
-// });
-
-// const [otherState, setOtherState] = useState('some other value');
-
-// console.log(personsState, otherState);
-
-// const switchNameHandler = () => {
-//   setPersonsState({
-//     persons: [
-//       { id: 1, name: 'Davin', age: 30 },
-//       { id: 2, name: 'John', age: 55 },
-//       { id: 3, name: 'Sarah', age: 37 },
-//     ],
-//   });
-
-//   setOtherState('Changed Other State');
-// };
+export default Radium(App);
