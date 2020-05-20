@@ -36,10 +36,12 @@ class App extends Component {
     });
   };
 
-  deleteAccount = (accountIndex) => {
+  deleteAccount = (index) => {
     // const account = this.state.accounts.slice();
     const accounts = [...this.state.accounts];
-    accounts.splice(accountIndex, 1);
+
+    accounts.splice(index, 1);
+
     this.setState({ accounts: accounts });
   };
 
@@ -61,12 +63,12 @@ class App extends Component {
         <div>
           {this.state.accounts.map((account, index) => (
             <Person
-              id={account.id}
-              key={account.id}
+              id={index}
+              key={index}
               name={account.name}
               age={account.age}
-              click={() => this.deleteAccount(account.id)}
-              changeName={(e) => this.updateName(e, account.id)}
+              click={() => this.deleteAccount(index)}
+              changeName={(e) => this.updateName(e, index)}
             />
           ))}
         </div>
@@ -77,13 +79,18 @@ class App extends Component {
       <div className="App">
         <h1>REACT TRAINING</h1>
 
-        <button className="styleSwitchName" onClick={this.showAccounts}>
-          Show Names
+        <button
+          className={
+            this.state.showAccounts ? 'show-names-btn-red' : 'show-names-btn'
+          }
+          onClick={this.showAccounts}
+        >
+          {this.state.showAccounts ? 'Hide Names' : 'Show Names'}
         </button>
 
         {accounts}
 
-        <button className="styleReset" onClick={this.resetHandler}>
+        <button className="reset-btn" onClick={this.resetHandler}>
           RESET
         </button>
       </div>

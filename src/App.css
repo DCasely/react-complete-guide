@@ -2,8 +2,8 @@
   text-align: center;
 }
 
-.styleSwitchName {
-  background-color: blue;
+.show-names-btn {
+  background-color: green;
   color: white;
   font: inherit;
   border: 3px solid black;
@@ -13,7 +13,18 @@
   margin: 1rem auto;
 }
 
-.styleReset {
+.show-names-btn-red {
+  background-color: red;
+  color: white;
+  font: inherit;
+  border: 3px solid black;
+  padding: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 1rem auto;
+}
+
+.reset-btn {
   background-color: red;
   color: white;
   font: inherit;
