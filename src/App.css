@@ -9,7 +9,7 @@
 .bold {
   font-weight: bold;
 }
-
+/* 
 .show-names-btn-green {
   background-color: green;
   color: white;
@@ -30,7 +30,7 @@
   cursor: pointer;
   display: block;
   margin: 1rem auto;
-}
+} */
 
 .reset-btn {
   background-color: red;
