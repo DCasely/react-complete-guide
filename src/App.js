@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium, { StyleRoot } from 'radium';
+import styled from 'styled-components';
 import './App.css';
 import Person from './Person/Person';
 
@@ -95,6 +95,8 @@ class App extends Component {
           ))}
         </div>
       );
+
+      buttonStyle.backgroundColor = 'red';
     }
 
     const classes = [];
@@ -102,27 +104,25 @@ class App extends Component {
     if (this.state.accounts.length <= 1) classes.push('bold');
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1>REACT TRAINING</h1>
+      <div className="App">
+        <h1>REACT TRAINING</h1>
 
-          <p className={classes.join(' ')}>
-            Work Like There's Someone Working 24hrs Trying To Take It From You.
-          </p>
+        <p className={classes.join(' ')}>
+          Work Like There's Someone Working 24hrs Trying To Take It From You.
+        </p>
 
-          <button style={buttonStyle} onClick={this.showAccounts}>
-            {this.state.showAccounts ? 'Hide Names' : 'Show Names'}
-          </button>
+        <button style={buttonStyle} onClick={this.showAccounts}>
+          {this.state.showAccounts ? 'Hide Names' : 'Show Names'}
+        </button>
 
-          {accounts}
+        {accounts}
 
-          <button className="reset-btn" onClick={this.resetHandler}>
-            RESET
-          </button>
-        </div>
-      </StyleRoot>
+        <button className="reset-btn" onClick={this.resetHandler}>
+          RESET
+        </button>
+      </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;
