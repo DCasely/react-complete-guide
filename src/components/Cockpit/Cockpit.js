@@ -14,14 +14,6 @@ const Cockpit = (props) => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   console.log('[Cockpit.js] 2nd useEffect');
-
-  //   return () => {
-  //     console.log('[Cockpit.js] cleanup work in 2nd useEffect');
-  //   };
-  // });
-
   const bolder = [];
   if (props.accountsLength <= 2) bolder.push('red');
   if (props.accountsLength <= 1) bolder.push('bold');
