@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Cockpit from '../components/Cockpit/Cockpit';
+import Persons from '../components/Persons/Persons';
+import Reset from '../components/Reset/Reset';
 import './App.css';
 
 class App extends Component {
@@ -25,11 +26,9 @@ class App extends Component {
     });
 
     const account = { ...this.state.accounts[accountIndex] };
-
     account.name = e.target.value;
 
     const accounts = [...this.state.accounts];
-
     accounts[accountIndex] = account;
 
     this.setState({
@@ -39,9 +38,7 @@ class App extends Component {
 
   deleteAccount = (index) => {
     const accounts = [...this.state.accounts];
-
     const updatedAccounts = accounts.filter((account, idx) => idx !== index);
-
     this.setState({ accounts: updatedAccounts });
   };
 
@@ -56,46 +53,29 @@ class App extends Component {
   };
 
   render() {
-    let accounts = null;
-
-    if (this.state.showAccounts) {
-      accounts = (
-        <div>
-          {this.state.accounts.map((account, index) => (
-            <ErrorBoundary id={account.id} key={account.id}>
-              <Person
-                name={account.name}
-                age={account.age}
-                click={() => this.deleteAccount(index)}
-                changeName={(e) => this.updateName(e, account.id)}
-              />
-            </ErrorBoundary>
-          ))}
-        </div>
-      );
-    }
-
-    const classes = [];
-    if (this.state.accounts.length <= 2) classes.push('red');
-    if (this.state.accounts.length <= 1) classes.push('bold');
+    const bolder = [];
+    if (this.state.accounts.length <= 2) bolder.push('red');
+    if (this.state.accounts.length <= 1) bolder.push('bold');
 
     return (
       <div className="App">
-        <h1>REACT TRAINING</h1>
+        <Cockpit
+          showAccounts={this.showAccounts}
+          showing={this.state.showAccounts}
+          bolder={bolder.join(' ')}
+          btnText={this.state.showAccounts ? 'Hide Names' : 'Show Names'}
+          btnColor={this.state.showAccounts ? 'btn-red' : 'btn-green'}
+        />
 
-        <p className={classes.join(' ')}>
-          Work Like There's Someone Working 24hrs Trying To Take It From You.
-        </p>
+        {this.state.showAccounts && (
+          <Persons
+            accounts={this.state.accounts}
+            delete={this.deleteAccount}
+            updated={this.updateName}
+          />
+        )}
 
-        <button className="Button" onClick={this.showAccounts}>
-          {this.state.showAccounts ? 'Hide Names' : 'Show Names'}
-        </button>
-
-        {accounts}
-
-        <button className="reset-btn" onClick={this.resetHandler}>
-          RESET
-        </button>
+        <Reset resetHandler={this.resetHandler} />
       </div>
     );
   }

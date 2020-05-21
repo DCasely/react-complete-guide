@@ -1,0 +1,47 @@
+.Cockpit .red {
+  color: red;
+}
+
+.Cockpit .bold {
+  font-weight: bold;
+}
+
+.Cockpit .btn-green {
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 3px solid black;
+  padding: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 1rem auto;
+  width: 15rem;
+}
+
+.Cockpit .btn-red {
+  background-color: red;
+  color: white;
+  font: inherit;
+  border: 3px solid black;
+  padding: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 1rem auto;
+  width: 15rem;
+}
+
+.Cockpit .btn-red:hover,
+.Cockpit .btn-green:hover {
+  transform: scale(1.1);
+}
+
+.Cockpit .btn-red:active,
+.Cockpit .btn-green:active {
+  transform: scale(1);
+}
+
+.Cockpit .btn-red:focus,
+.Cockpit .btn-green:focus {
+  outline: none;
+  box-shadow: none;
+}

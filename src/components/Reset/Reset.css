@@ -1,0 +1,20 @@
+.Reset .reset-btn {
+  background-color: blue;
+  color: white;
+  font: inherit;
+  border: 1px solid black;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.Reset .reset-btn:hover {
+  transform: scale(1.1);
+}
+
+.Reset .reset-btn:active {
+  transform: scale(1);
+}
+
+.Reset .reset-btn:focus {
+  outline: none;
+}
