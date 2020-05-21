@@ -5,6 +5,11 @@ import Reset from '../components/Reset/Reset';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor');
+  }
+
   state = {
     accounts: [
       { id: 1, name: 'Davin', age: 30 },
@@ -13,6 +18,19 @@ class App extends Component {
     ],
     showAccounts: false,
   };
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  componentWillMount() {
+    console.log('[App.js] componentWillMount');
+  }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
+  }
 
   showAccounts = () => {
     const show = this.state.showAccounts;
@@ -53,6 +71,8 @@ class App extends Component {
   };
 
   render() {
+    console.log('[App.js] render');
+
     const bolder = [];
     if (this.state.accounts.length <= 2) bolder.push('red');
     if (this.state.accounts.length <= 1) bolder.push('bold');
