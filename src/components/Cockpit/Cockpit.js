@@ -5,7 +5,12 @@ const Cockpit = (props) => {
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
     // HTTP Request...
-  });
+    setTimeout(() => {
+      alert('Saved data to cloud!');
+    }, 1000);
+  }, []);
+
+  // useEffect(); YOU CAN HAVE MULTIPLE useEffects
 
   return (
     <div className="Cockpit">

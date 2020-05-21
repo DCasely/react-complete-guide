@@ -91,6 +91,7 @@ class App extends Component {
         <Cockpit
           title={this.props.appTitle}
           subTitle={this.props.appSubTitle}
+          accounts={this.state.accounts}
           showAccounts={this.showAccounts}
           showing={this.state.showAccounts}
           bolder={bolder.join(' ')}
