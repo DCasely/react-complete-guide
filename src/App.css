@@ -2,8 +2,16 @@
   text-align: center;
 }
 
-.styleSwitchName {
-  background-color: blue;
+.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bold;
+}
+/* 
+.show-names-btn-green {
+  background-color: green;
   color: white;
   font: inherit;
   border: 3px solid black;
@@ -13,7 +21,44 @@
   margin: 1rem auto;
 }
 
-.styleReset {
+.show-names-btn-red {
+  background-color: red;
+  color: white;
+  font: inherit;
+  border: 3px solid black;
+  padding: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 1rem auto;
+} */
+
+.Button {
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 3px solid black;
+  padding: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 1rem auto;
+}
+
+.Button:hover {
+  background-color: black;
+  color: white;
+  transform: scale(1.1);
+}
+
+.Button:active {
+  transform: scale(1);
+}
+
+.Button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.reset-btn {
   background-color: red;
   color: white;
   font: inherit;

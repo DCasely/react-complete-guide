@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import './App.css';
 
 class App extends Component {
   state = {
@@ -36,11 +37,12 @@ class App extends Component {
     });
   };
 
-  deleteAccount = (accountIndex) => {
-    // const account = this.state.accounts.slice();
+  deleteAccount = (index) => {
     const accounts = [...this.state.accounts];
-    accounts.splice(accountIndex, 1);
-    this.setState({ accounts: accounts });
+
+    const updatedAccounts = accounts.filter((account, idx) => idx !== index);
+
+    this.setState({ accounts: updatedAccounts });
   };
 
   resetHandler = () => {
@@ -60,30 +62,38 @@ class App extends Component {
       accounts = (
         <div>
           {this.state.accounts.map((account, index) => (
-            <Person
-              id={account.id}
-              key={account.id}
-              name={account.name}
-              age={account.age}
-              click={() => this.deleteAccount(account.id)}
-              changeName={(e) => this.updateName(e, account.id)}
-            />
+            <ErrorBoundary id={account.id} key={account.id}>
+              <Person
+                name={account.name}
+                age={account.age}
+                click={() => this.deleteAccount(index)}
+                changeName={(e) => this.updateName(e, account.id)}
+              />
+            </ErrorBoundary>
           ))}
         </div>
       );
     }
 
+    const classes = [];
+    if (this.state.accounts.length <= 2) classes.push('red');
+    if (this.state.accounts.length <= 1) classes.push('bold');
+
     return (
       <div className="App">
         <h1>REACT TRAINING</h1>
 
-        <button className="styleSwitchName" onClick={this.showAccounts}>
-          Show Names
+        <p className={classes.join(' ')}>
+          Work Like There's Someone Working 24hrs Trying To Take It From You.
+        </p>
+
+        <button className="Button" onClick={this.showAccounts}>
+          {this.state.showAccounts ? 'Hide Names' : 'Show Names'}
         </button>
 
         {accounts}
 
-        <button className="styleReset" onClick={this.resetHandler}>
+        <button className="reset-btn" onClick={this.resetHandler}>
           RESET
         </button>
       </div>
@@ -92,27 +102,3 @@ class App extends Component {
 }
 
 export default App;
-
-// const [personsState, setPersonsState] = useState({
-//   persons: [
-//     { id: 1, name: 'Jake', age: 28 },
-//     { id: 2, name: 'Jack', age: 40 },
-//     { id: 3, name: 'Bill', age: 31 },
-//   ],
-// });
-
-// const [otherState, setOtherState] = useState('some other value');
-
-// console.log(personsState, otherState);
-
-// const switchNameHandler = () => {
-//   setPersonsState({
-//     persons: [
-//       { id: 1, name: 'Davin', age: 30 },
-//       { id: 2, name: 'John', age: 55 },
-//       { id: 3, name: 'Sarah', age: 37 },
-//     ],
-//   });
-
-//   setOtherState('Changed Other State');
-// };

@@ -22,3 +22,9 @@
 .Person button:active {
   transform: scale(1);
 }
+
+@media (min-width: 500px) {
+  .Person {
+    width: 450px;
+  }
+}
