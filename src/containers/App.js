@@ -60,6 +60,8 @@ class App extends Component {
     return (
       <div className="App">
         <Cockpit
+          title={this.props.appTitle}
+          subTitle={this.props.appSubTitle}
           showAccounts={this.showAccounts}
           showing={this.state.showAccounts}
           bolder={bolder.join(' ')}
