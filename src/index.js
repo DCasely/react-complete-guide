@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
   <App
-    appTitle="Account Manager"
+    appTitle="REACT TRAINING"
     appSubTitle="Work Like There's Someone Working 24hrs Trying To Take It From You."
   />,
   document.getElementById('root')
