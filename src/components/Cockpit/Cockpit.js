@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Cockpit.css';
 
 const Cockpit = (props) => {
+  useEffect(() => {
+    console.log('[Cockpit.js] useEffect');
+    // HTTP Request...
+  });
+
   return (
     <div className="Cockpit">
       <h1>{props.title}</h1>
