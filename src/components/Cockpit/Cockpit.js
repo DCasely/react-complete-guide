@@ -14,18 +14,22 @@ const Cockpit = (props) => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log('[Cockpit.js] 2nd useEffect');
+  // useEffect(() => {
+  //   console.log('[Cockpit.js] 2nd useEffect');
 
-    return () => {
-      console.log('[Cockpit.js] cleanup work in 2nd useEffect');
-    };
-  });
+  //   return () => {
+  //     console.log('[Cockpit.js] cleanup work in 2nd useEffect');
+  //   };
+  // });
+
+  const bolder = [];
+  if (props.accountsLength <= 2) bolder.push('red');
+  if (props.accountsLength <= 1) bolder.push('bold');
 
   return (
     <div className="Cockpit">
       <h1>{props.title}</h1>
-      <p className={props.bolder}>{props.subTitle}</p>
+      <p className={bolder.join(' ')}>{props.subTitle}</p>
       <button className={props.btnColor} onClick={props.showAccounts}>
         {props.btnText}
       </button>
@@ -33,4 +37,4 @@ const Cockpit = (props) => {
   );
 };
 
-export default Cockpit;
+export default React.memo(Cockpit);

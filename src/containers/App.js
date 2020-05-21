@@ -83,10 +83,6 @@ class App extends Component {
   render() {
     console.log('[App.js] render');
 
-    const bolder = [];
-    if (this.state.accounts.length <= 2) bolder.push('red');
-    if (this.state.accounts.length <= 1) bolder.push('bold');
-
     return (
       <div className="App">
         <button
@@ -102,9 +98,9 @@ class App extends Component {
             title={this.props.appTitle}
             subTitle={this.props.appSubTitle}
             accounts={this.state.accounts}
+            accountsLength={this.state.accounts.length}
             showAccounts={this.showAccounts}
             showing={this.state.showAccounts}
-            bolder={bolder.join(' ')}
             btnText={this.state.showAccounts ? 'Hide Names' : 'Show Names'}
             btnColor={this.state.showAccounts ? 'btn-red' : 'btn-green'}
           />
