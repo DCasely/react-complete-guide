@@ -1,13 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Cockpit.css';
 
 const Cockpit = (props) => {
+  const buttonClickRef = useRef(null);
+
+  // useEffect RUNS after this entire function LOADS.
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
     // HTTP Request...
-    setTimeout(() => {
-      alert('Saved data to cloud!');
-    }, 1000);
+    // setTimeout(() => {
+    //   alert('Saved data to cloud!');
+    // }, 1000);
+
+    buttonClickRef.current.click();
 
     return () => {
       console.log('[Cockpit.js] cleanup work in useEffect');
@@ -22,7 +27,11 @@ const Cockpit = (props) => {
     <div className="Cockpit">
       <h1>{props.title}</h1>
       <p className={bolder.join(' ')}>{props.subTitle}</p>
-      <button className={props.btnColor} onClick={props.showAccounts}>
+      <button
+        ref={buttonClickRef}
+        className={props.btnColor}
+        onClick={props.showAccounts}
+      >
         {props.btnText}
       </button>
     </div>
