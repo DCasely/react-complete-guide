@@ -21,6 +21,7 @@ class Person extends Component {
 
     return (
       <Aux>
+        {this.props.isLoggedIn ? <p>Logged In!</p> : <p>Please Log In</p>}
         <p>
           My name is {this.props.name} and I am {this.props.age} years old.
         </p>

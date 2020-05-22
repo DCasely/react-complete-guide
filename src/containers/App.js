@@ -21,6 +21,7 @@ class App extends Component {
     showAccounts: false,
     showCockpit: true,
     counter: 0,
+    loggedIn: false,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -83,6 +84,12 @@ class App extends Component {
     });
   };
 
+  loginHandler = () => {
+    this.setState((prevState) => ({ loggedIn: true }));
+
+    console.log(this.state.loggedIn);
+  };
+
   render() {
     console.log('[App.js] render');
 
@@ -106,6 +113,8 @@ class App extends Component {
             showing={this.state.showAccounts}
             btnText={this.state.showAccounts ? 'Hide Names' : 'Show Names'}
             btnColor={this.state.showAccounts ? 'btn-red' : 'btn-green'}
+            btnGreen="btn-green"
+            login={this.loginHandler}
           />
         )}
 
@@ -114,6 +123,7 @@ class App extends Component {
             accounts={this.state.accounts}
             delete={this.deleteAccount}
             updated={this.updateName}
+            isLoggedIn={this.state.loggedIn}
           />
         )}
 

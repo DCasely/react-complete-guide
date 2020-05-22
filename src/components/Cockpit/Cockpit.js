@@ -34,6 +34,9 @@ const Cockpit = (props) => {
       >
         {props.btnText}
       </button>
+      <button onClick={props.login} className={props.btnGreen}>
+        Log In
+      </button>
     </div>
   );
 };

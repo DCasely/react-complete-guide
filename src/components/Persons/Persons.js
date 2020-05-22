@@ -41,6 +41,7 @@ class Persons extends PureComponent {
         age={account.age}
         click={() => this.props.delete(index)}
         changeName={(e) => this.props.updated(e, account.id)}
+        isLoggedIn={this.props.isLoggedIn}
       />
     ));
   }
