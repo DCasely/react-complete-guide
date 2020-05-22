@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import LoginContext from '../../context/login-context';
 import './Cockpit.css';
 
 const Cockpit = (props) => {
@@ -34,9 +35,14 @@ const Cockpit = (props) => {
       >
         {props.btnText}
       </button>
-      <button onClick={props.login} className={props.btnGreen}>
-        Log In
-      </button>
+
+      <LoginContext.Consumer>
+        {(context) => (
+          <button onClick={context.login} className={props.btnGreen}>
+            Log In
+          </button>
+        )}
+      </LoginContext.Consumer>
     </div>
   );
 };

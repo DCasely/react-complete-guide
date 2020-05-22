@@ -4,6 +4,7 @@ import Persons from '../components/Persons/Persons';
 import Reset from '../components/Reset/Reset';
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Aux';
+import LoginContext from '../context/login-context';
 import './App.css';
 
 class App extends Component {
@@ -85,9 +86,8 @@ class App extends Component {
   };
 
   loginHandler = () => {
-    this.setState((prevState) => ({ loggedIn: true }));
-
-    console.log(this.state.loggedIn);
+    const log = this.state.loggedIn;
+    this.setState({ loggedIn: !log });
   };
 
   render() {
@@ -103,29 +103,35 @@ class App extends Component {
           Remove Cockpit
         </button>
 
-        {this.state.showCockpit && (
-          <Cockpit
-            title={this.props.appTitle}
-            subTitle={this.props.appSubTitle}
-            accounts={this.state.accounts}
-            accountsLength={this.state.accounts.length}
-            showAccounts={this.showAccounts}
-            showing={this.state.showAccounts}
-            btnText={this.state.showAccounts ? 'Hide Names' : 'Show Names'}
-            btnColor={this.state.showAccounts ? 'btn-red' : 'btn-green'}
-            btnGreen="btn-green"
-            login={this.loginHandler}
-          />
-        )}
+        <LoginContext.Provider
+          value={{
+            loggedIn: this.state.loggedIn,
+            login: this.loginHandler,
+          }}
+        >
+          {this.state.showCockpit && (
+            <Cockpit
+              title={this.props.appTitle}
+              subTitle={this.props.appSubTitle}
+              accounts={this.state.accounts}
+              accountsLength={this.state.accounts.length}
+              showAccounts={this.showAccounts}
+              showing={this.state.showAccounts}
+              btnText={this.state.showAccounts ? 'Hide Names' : 'Show Names'}
+              btnColor={this.state.showAccounts ? 'btn-red' : 'btn-green'}
+              btnGreen="btn-green"
+            />
+          )}
 
-        {this.state.showAccounts && (
-          <Persons
-            accounts={this.state.accounts}
-            delete={this.deleteAccount}
-            updated={this.updateName}
-            isLoggedIn={this.state.loggedIn}
-          />
-        )}
+          {this.state.showAccounts && (
+            <Persons
+              accounts={this.state.accounts}
+              delete={this.deleteAccount}
+              updated={this.updateName}
+              isLoggedIn={this.state.loggedIn}
+            />
+          )}
+        </LoginContext.Provider>
 
         <Reset resetHandler={this.resetHandler} />
       </Aux>
