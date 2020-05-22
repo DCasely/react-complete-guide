@@ -20,6 +20,7 @@ class App extends Component {
     ],
     showAccounts: false,
     showCockpit: true,
+    counter: 0,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -27,9 +28,9 @@ class App extends Component {
     return state;
   }
 
-  // componentWillMount() {
-  //   console.log('[App.js] componentWillMount');
-  // }
+  componentWillMount() {
+    console.log('[App.js] componentWillMount');
+  }
 
   componentDidMount() {
     console.log('[App.js] componentDidMount');
@@ -61,8 +62,8 @@ class App extends Component {
     const accounts = [...this.state.accounts];
     accounts[accountIndex] = account;
 
-    this.setState({
-      accounts: accounts,
+    this.setState((prevState, props) => {
+      return { accounts: accounts, counter: prevState.counter + 1 };
     });
   };
 
