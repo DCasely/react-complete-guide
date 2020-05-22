@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Aux from '../../../hoc/Aux';
 import './Person.css';
 
@@ -7,7 +7,7 @@ class Person extends Component {
     console.log('[Person.js] rendering...');
 
     return (
-      <Fragment>
+      <Aux>
         <p>
           My name is {this.props.name} and I am {this.props.age} years old.
         </p>
@@ -18,7 +18,7 @@ class Person extends Component {
           value={this.props.name}
         />
         <button onClick={this.props.click}>Delete</button>
-      </Fragment>
+      </Aux>
     );
   }
 }

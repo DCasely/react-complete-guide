@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Cockpit from '../components/Cockpit/Cockpit';
 import Persons from '../components/Persons/Persons';
 import Reset from '../components/Reset/Reset';
+import WithClass from '../hoc/WithClass';
 import './App.css';
 
 class App extends Component {
@@ -84,7 +85,7 @@ class App extends Component {
     console.log('[App.js] render');
 
     return (
-      <div className="App">
+      <WithClass classes="App">
         <button
           onClick={() => {
             this.setState({ showCockpit: false });
@@ -115,7 +116,7 @@ class App extends Component {
         )}
 
         <Reset resetHandler={this.resetHandler} />
-      </div>
+      </WithClass>
     );
   }
 }
