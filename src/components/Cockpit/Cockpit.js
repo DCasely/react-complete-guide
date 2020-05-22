@@ -1,9 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import LoginContext from '../../context/login-context';
 import './Cockpit.css';
 
 const Cockpit = (props) => {
   const buttonClickRef = useRef(null);
+  const loginContext = useContext(LoginContext);
+
+  console.log(loginContext.loggedIn);
 
   // useEffect RUNS after this entire function LOADS.
   useEffect(() => {
@@ -36,13 +39,9 @@ const Cockpit = (props) => {
         {props.btnText}
       </button>
 
-      <LoginContext.Consumer>
-        {(context) => (
-          <button onClick={context.login} className={props.btnGreen}>
-            Log In
-          </button>
-        )}
-      </LoginContext.Consumer>
+      <button onClick={loginContext.login} className={props.btnGreen}>
+        Log In
+      </button>
     </div>
   );
 };

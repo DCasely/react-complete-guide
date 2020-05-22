@@ -12,9 +12,12 @@ class Person extends Component {
     this.inputElementRef = React.createRef();
   }
 
+  static contextType = LoginContext;
+
   componentDidMount() {
     // this.inputElement.focus();
     this.inputElementRef.current.focus();
+    console.log(this.context.loggedIn);
   }
 
   render() {
@@ -22,11 +25,8 @@ class Person extends Component {
 
     return (
       <Aux>
-        <LoginContext.Consumer>
-          {(context) =>
-            context.loggedIn ? <p>Logged In!</p> : <p>Please Log In</p>
-          }
-        </LoginContext.Consumer>
+        {this.context.loggedIn ? <p>Logged In!</p> : <p>Please Log In</p>}
+
         <p>
           My name is {this.props.name} and I am {this.props.age} years old.
         </p>
